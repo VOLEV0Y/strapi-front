@@ -26,5 +26,20 @@
     "eslint-config-next": "15.3.1",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "description": "1) Склонируйте репозиторий\r 2) npm i\r 3) Переименуйте .env.example в .env, вставьте свой url и ключ\r 4) Запустите через npm run dev",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remmark99/strapi-front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/remmark99/strapi-front/issues"
+  },
+  "homepage": "https://github.com/remmark99/strapi-front#readme"
 }

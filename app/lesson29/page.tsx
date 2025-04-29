@@ -7,45 +7,48 @@ import React from 'react'
 export default function Lesson29() {
   const supabase = createClient();
 
-  const { data: users = [] } = useQuery({
-    queryKey: ["users"],
+  const { data: client = [] } = useQuery({
+    queryKey: ["client"],
     queryFn: async () => {
-      const res = await supabase.from("users").select("*");
+      const res = await supabase.from("client").select("*");
 
       return res.data;
     }
   })
 
-  const { data: vacations = [] } = useQuery({
-    queryKey: ["vacations"],
+  const { data: drivers = [] } = useQuery({
+    queryKey: ["drivers"],
     queryFn: async () => {
-      const res = await supabase.from("vacations").select("*");
+      const res = await supabase.from("drivers").select("*");
 
       return res.data;
     }
   })
 
-  console.log(users, vacations);
+  console.log(client, drivers);
 
   const deleteVacation = async (vacationId: string) => {
-    await supabase.from("vacations").delete().eq("id", vacationId);
+    await supabase.from("drivers").delete().eq("id", vacationId);
   }
 
   const createUser = async () => {
-    await supabase.from("students").insert({
-      name: "Primer",
+    await supabase.from("drivers").insert({
+      // id: Math.round(Math.random() * 2000000),
+      fullname: "Pavel52",
+      phone: "798749834",
+      order_id: 1,
     });
   }
 
   return (
     <div>
       <div>
-        Пользователи:
-        {users.map((user) => (<div>{user.email}</div>))}
+        Клиенты:
+        {client.map((client) => (<div>{client.fullname}</div>))}
       </div>
       <div>
-        Отпуска:
-        {vacations.map((vacation) => (<div><div>{vacation.created_at}</div><button className='bg-red-500 cursor-pointer' onClick={() => deleteVacation(vacation.id)}>Удалить</button></div>))}
+        Водители:
+        {drivers.map((drivers) => (<div><div>{drivers.phone}</div><button className='bg-red-500 cursor-pointer' onClick={() => deleteVacation(drivers.id)}>Удалить</button></div>))}
       </div>
       <div>
         <input type='text' className='border border-black' />
